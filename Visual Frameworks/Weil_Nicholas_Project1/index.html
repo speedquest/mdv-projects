@@ -38,9 +38,16 @@
     <fieldset>
         <legend>Car Information</legend>
         <ul>
-                <li><label for="year">Car Year:</label><input type="text" id="year" /></li>
-                <li><label for="make">Car Make (Ford, Chevy, etc.):</label><input type="text" id="make" /></li>
-                <li><label for="model">Car Model (Mustang, Camaro, etc.):</label><input type="text" id="model" /></li>
+            <li><label for="year">Car Year:</label><input type="text" id="year" /></li>
+            <li><label for="make">Car Make (Ford, Chevy, etc.):</label><input type="text" id="make" /></li>
+            <li><label for="model">Car Model (Mustang, Camaro, etc.):</label><input type="text" id="model" /></li>
+        </ul>
+        <li> Check your engine type:
+            <ul>
+                <li><input type="radio" checked value="4 Cyl." id="cyl4" name="engine"/><label for="cyl4">4 cyl.</label></li>
+                <li><input type="radio" value="6 Cyl." id="cyl6" name="engine"/><label for="cyl6">6 cyl.</label></li>
+                <li><input type="radio" value="8 Cyl." id="cyl8" name="engine"/><label for="cyl8">8 cyl.</label></li>
+
         </ul>
     </fieldset>
     <input type="submit" value="Add/Change Data" />
