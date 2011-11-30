@@ -5,7 +5,16 @@
  November 30, 2011
  
 */
-h1{
-    background: #ff0000
+body {
+    width: 100%;
+    font-family: Arial;
+    background-color: #B4C1D2;
+}
+
+fieldset {
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #C5CEDC;
+
 }
     
