@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", function(){
     
     // Find value of selected radio button.
     function getSelectedRadio() {
-        var radios = document.forms[0].engineSize;
+        var radios = document.forms[0].engine;
         for (var i=0; i < radios.length; i++) {
             if (radios[i].checked) {
                 engineValue = radios[i].value;
@@ -57,7 +57,7 @@ window.addEventListener("DOMContentLoaded", function(){
             item.year           = ["Car Year:", $('year').value];
             item.manfacturer    = ["Make:", $('manufacturer').value];
             item.model          = ["Model:", $('model').value];
-            item.engineSize     = ["Engine Size:", engineValue];
+            item.engine         = ["Engine Size:", engineValue];
             item.lastOilDate    = ["Date of last Oil Change:", $('lastOilDate').value];
             item.synthetic      = ["Synthetic Oil:", syntheticValue];
             item.oilDuration    = ["Oil Change Duration (miles):", $('oilDuration').value];
@@ -73,6 +73,7 @@ window.addEventListener("DOMContentLoaded", function(){
         engineValue,
         syntheticValue = false;
     makeManufacturers();
+    
     
     // Set Link & Submit Click Events
 /*    var displayCar = $('displayCar');
