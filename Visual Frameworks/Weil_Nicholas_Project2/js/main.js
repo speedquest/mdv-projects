@@ -45,6 +45,26 @@ window.addEventListener("DOMContentLoaded", function(){
             syntheticValue = false;
         }
     }
+    
+    function toggleControls(n) {
+        switch(n) {
+            case "on":
+                $('carRegister').style.display = "none";
+                $('clearCar').style.display = "inline";
+                $('displayCar').style.display = "none";
+                $('addNew').style.display = "inline";
+                break;
+            case "off":
+                $('carRegister').style.display = "block";
+                $('clearCar').style.display = "inline";
+                $('displayCar').style.display = "inline";
+                $('addNew').style.display = "none";
+                $('items').style.display = "none";           
+                break;
+            default:
+                return false;
+        }
+    }
     // Save data to local storage for one item = localStorage.setItem("Key","data");
 
     function storeData () {
@@ -66,8 +86,49 @@ window.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem(id, JSON.stringify(item));
         
         alert("Car Registered!");
-            
     }
+
+    function getData () {
+        toggleControls ("on");
+        if(localStorage.length === 0) {
+            alert("There is no data in Local Storage.");
+        }
+        // Write Data from Local Storage to the Browser.
+        var makeDiv = document.createElement('div');
+        makeDiv.setAttribute("id", "items");
+        var makeList = document.createElement('ul');
+        makeDiv.appendChild(makeList);
+        document.body.appendChild(makeDiv);
+        $('items').style.display = "block";
+        for(var i= 0, len=localStorage.length; i < len; i++) {
+            var makeLi = document.createElement('li');
+            makeList.appendChild(makeLi);
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            // Converting string from Local Storage value back to object using JSON.parse
+            var obj = JSON.parse(value);
+            var makeSubList = document.createElement('ul');
+            makeLi.appendChild(makeSubList);
+            for(var n in obj) {
+                var makeSubLi = document.createElement('li');
+                makeSubList.appendChild(makeSubLi);
+                var optSubText = obj[n][0]+" "+obj[n][1];
+                makeSubLi.innerHTML = optSubText;
+            }
+        }
+    }        
+    
+    function clearLocal (){
+        if (localStorage.length === 0) {
+            alert("There is no data to clear!")
+        } else {
+            localStorage.clear();
+            alert("All vehicles have been removed!");
+            window.location.reload();
+            return false;
+        }
+    }
+    
     // Variable Defaults
     var carMakes = ["--Choose a Car---", "Acura", "BMW","Chevrolet", "Dodge", "Ford", "Saturn"],
         engineValue,
@@ -76,10 +137,11 @@ window.addEventListener("DOMContentLoaded", function(){
     
     
     // Set Link & Submit Click Events
-/*    var displayCar = $('displayCar');
+    var displayCar = $('displayCar');
     displayCar.addEventListener("click", getData);
-    var clearCar = $('clear');
-    clearCar.addEventListener("click", clearLocal); */
+    
+    var clearCar = $('clearCar');
+    clearCar.addEventListener("click", clearLocal);
     var save = $('submit');
     save.addEventListener("click", storeData);    
 
