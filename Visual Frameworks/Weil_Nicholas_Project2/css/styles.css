@@ -5,16 +5,47 @@
  November 30, 2011
  
 */
+
+
 body {
     width: 100%;
     font-family: Arial;
-    background-color: #B4C1D2;
+    background-color: #C0C0C0;
+}
+h1 {
+    display: inline;
+    margin-left: 7px;
+}
+nav {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 7px;
+}
+Header {
+    color: #FADB4F;
+    Font-size: 22px ;
+}
+legend {
+    color: #FADB4F;
+    position: relative;
+    top: +20px;
+}
+li {
+    font-size: 20px;
+    color: #FADB4F;
 }
 
 fieldset {
     margin-left: 5px;
-    margin-right: 5px;
-    background-color: #C5CEDC;
-
+    margin-right: 20px;
+    background-color: #324EA1;
+    border: 3px solid #FFFFFF;
 }
-    
+
+li#OilChange{
+        font-weight: bold;   
+}
+textarea {
+    background-color: #C4C7DC;
+}
