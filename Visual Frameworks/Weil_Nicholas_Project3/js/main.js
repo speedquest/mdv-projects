@@ -1,7 +1,8 @@
 // Visual Frameworks (VFW)
 // Nick Weil
 // Nov.-Dec. 2011
-// Project 2
+// Project 3
+// December 8, 2011
 
 // Wait until the DOM is ready.
 window.addEventListener("DOMContentLoaded", function(){
