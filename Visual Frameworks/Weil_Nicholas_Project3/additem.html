@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+Nick Weil
+VFW 1
+Nov/Dec 2011
+Project 2
+12/1/2011
+-->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="My First HTML5 document." />
+    <!-- SEO tags  -->
+    <meta name="keywords" content="html5, mobile development, Full Sail University, automotive, gas mileage, auto, oil change, auto maintenance" />
+    <!-- Allows search engine robots to index the page and continue reading links -->
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Viewport tells the browser whether the user can scale the content. Also tells how wide it should
+    assume the content will be displayed for the width of the device -->
+    <meta name="viewport" content="user-scalable=no, width=device-width" />
+    <meta name=HandheldFriendly" content="True" />
+    
+    <!-- Document Title -->
+    <title>My Auto Logbook App</title>
+    <!-- Import our CSS Styles Sheet-->
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    
+</head>
+
+<body>
+    <header><h1>Add A Car to Your Garage</h1></header>
+    <nav>
+        <!-- Reset the data on the form  -->
+        <a href="#" id="clearCar">Reset Car Info</a>    
+        <!-- Display the collected data  -->
+        <a href="#" id="displayCar">Display Car Info</a>
+        <a href="additem.html" id="addNew" style="display:none;">Add Vehicle</a>
+    </nav>
+    <form action="#" method="post" id="carRegister"/>
+        <fieldset>
+            <legend><h2 id="CarInfo">Car Information</h2></legend>
+            <ul>
+                <!-- Text Entry  -->
+                <li><label for="year">Car Year:</label><input type="text" id="year" /></li>
+                
+                <!--  Car Make -->
+                <li id="select"><label for="group"> Car Make: </label></li>
+                <li><label for="model">Car Model (Mustang, Camaro, etc.):</label><input type="text" id="model" /></li>
+                
+                <!-- Radio Button -->
+                <li><label for="engineSize">Check your engine type:</label>
+                    <ul class="checkbox">
+                        <li><input type="radio" checked value="4 Cyl." id="cyl4" name="engine"/><label for="cyl4">4 cyl.</label></li>
+                        <li><input type="radio" value="6 Cyl." id="cyl6" name="engine"/><label for="cyl6">6 cyl.</label></li>
+                        <li><input type="radio" value="8 Cyl." id="cyl8" name="engine"/><label for="cyl8">8 cyl.</label></li> 
+                    </ul>
+                <!-- Date Entry  -->
+                <li id="OilChange"><label for="lastOilDate">Date of last Oil Change:</label>
+                    <input type="date" size="30" id="lastOilDate"/><br>
+                    <!-- Boolean -->
+                    <label for="synthetic">Check for Synthetic Oil:</label>
+                    <input type="checkbox" name="oil" value="true" id="synthetic"/>
+                    
+                 <!-- Oil Change Duration Slider  -->   
+                <li><label for="oilDuration">Oil Change Duration(miles):</label><input type="range" min="2000" max="15000" value="3000" step="1000" id="oilDuration" /></li>
+                
+                <!-- Notes Box  -->
+                <li><label for="notes">Notes:</label><br>
+                    <textarea name="notes" rows="3" cols="30" id="notes" /></textarea>
+                    
+            </ul>
+        </fieldset>
+        <input type="submit" value="Register Car" id="submit" />
+    </form>
+    <script src="js/main.js" type="text/javascript"></script>
+</body>
+</html>
