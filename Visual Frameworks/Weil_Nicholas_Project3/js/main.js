@@ -103,6 +103,7 @@ window.addEventListener("DOMContentLoaded", function(){
         $('items').style.display = "block";
         for(var i= 0, len=localStorage.length; i < len; i++) {
             var makeLi = document.createElement('li');
+            var linksLi = document.createElement ('li');
             makeList.appendChild(makeLi);
             var key = localStorage.key(i);
             var value = localStorage.getItem(key);
@@ -115,9 +116,61 @@ window.addEventListener("DOMContentLoaded", function(){
                 makeSubList.appendChild(makeSubLi);
                 var optSubText = obj[n][0]+" "+obj[n][1];
                 makeSubLi.innerHTML = optSubText;
+                makeSubList.appendChild(linksLi);
             }
+            makeItemLinks(localStorage.key(i), linksLi);  //  Create Edt/Delete buttons for each item in local storage.
         }
-    }        
+    }
+    
+    // Make Item Links
+    // Create edit/delete links for each Local Storage Item.
+    function makeItemLinks(key, linksLi) {
+        // add edit single item link
+        var editLink = document.createElement('a');
+        editLink.href = "#";
+        editLink.key = key;
+        var editText = "Edit Vehicle";
+        editLink.addEventListener("click", editItem);
+        editLink.innerHTML = editText;
+        linksLi.appendChild(editLink);
+        
+        // add line break
+        var breakTag = document.createElement('br');
+        linksLi.appendChild(breakTag);
+        
+        //add delete single item link
+        var deleteLink = document.createElement('a');
+        deleteLink.href = "#";
+        deleteLink.key = key;
+        var deleteText = "Delete Vehicle";
+        // deleteLink.addEventListener("click", deleteItem);
+        deleteLink.innerHTML = deleteText;
+        linksLi.appendChild(deleteLink);                                               
+    }
+    
+    // Edit Item Function
+    function editItem () {
+        //Grab the data of the edited item from local storage
+        var value = localStorage.getItem(this.key);
+        var item = JSON.parse(value);
+        // Show the form
+        toggleControls("off");
+        
+        // populate the form fields with the current Local Storage values.
+        $('year').value = item.year[1];
+        $('manufacturer').value = item.manufacturer[1];
+        $('model').value = item.model[1];
+        var radios = document.forms[0].engine;
+        for (var i=0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                engineValue = radios[i].value;
+        $('engine').value = item.engine[1];
+        $('lastOilDate').value = item.lastOilDate[1];
+        var radios = document.forms[0].synthetic
+        $('synthetic').value = item.synthetic[1];
+        $('oilDuration').value = item.oilDuration[1];
+        $('notes').value = item.notes[1];
+    }
     
     function clearLocal (){
         if (localStorage.length === 0) {
