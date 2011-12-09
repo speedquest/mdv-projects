@@ -148,6 +148,7 @@ window.addEventListener("DOMContentLoaded", function(){
         linksLi.appendChild(deleteLink);
 
     }
+    // VIDEO #3.3 3 minutes remaining!
     
     // Edit Item Function
     function editItem () {
@@ -166,10 +167,10 @@ window.addEventListener("DOMContentLoaded", function(){
             if (radios[i].checked) {
                 engineValue = radios[i].value;
             }
-        $('engine').value = item.engine[1];
+        $('engine').value = item.engineValue[1];
         $('lastOilDate').value = item.lastOilDate[1];
         var radios = document.forms[0].synthetic;
-        $('synthetic').value = item.synthetic[1];
+        $('synthetic').value = item.syntheticValue[1];
         $('oilDuration').value = item.oilDuration[1];
         $('notes').value = item.notes[1];
     }
