@@ -63,8 +63,8 @@ window.addEventListener("DOMContentLoaded", function(){
                 $('items').style.display = "none";           
                 break;
             default:
-                return false;
         }
+        return false;
     }
     // Save data to local storage for one item = localStorage.setItem("Key","data");
 
@@ -123,7 +123,7 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
     // Make Item Links
-    // Create edit/delete links for each Local Storage Item.
+   // Create edit/delete links for each Local Storage Item.
     function makeItemLinks(key, linksLi) {
         // add edit single item link
         var editLink = document.createElement('a');
@@ -145,7 +145,8 @@ window.addEventListener("DOMContentLoaded", function(){
         var deleteText = "Delete Vehicle";
         // deleteLink.addEventListener("click", deleteItem);
         deleteLink.innerHTML = deleteText;
-        linksLi.appendChild(deleteLink);                                               
+        linksLi.appendChild(deleteLink);
+
     }
     
     // Edit Item Function
@@ -164,23 +165,25 @@ window.addEventListener("DOMContentLoaded", function(){
         for (var i=0; i < radios.length; i++) {
             if (radios[i].checked) {
                 engineValue = radios[i].value;
+            }
         $('engine').value = item.engine[1];
         $('lastOilDate').value = item.lastOilDate[1];
-        var radios = document.forms[0].synthetic
+        var radios = document.forms[0].synthetic;
         $('synthetic').value = item.synthetic[1];
         $('oilDuration').value = item.oilDuration[1];
         $('notes').value = item.notes[1];
     }
-    
+}
+  
     function clearLocal (){
         if (localStorage.length === 0) {
-            alert("There is no data to clear!")
+            alert("There is no data to clear!");
         } else {
             localStorage.clear();
             alert("All vehicles have been removed!");
             window.location.reload();
-            return false;
         }
+        return false;
     }
     
     // Variable Defaults
