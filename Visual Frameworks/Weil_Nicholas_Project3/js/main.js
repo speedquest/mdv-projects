@@ -201,6 +201,32 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
     function validate () {
+        // Define the elements we want to check.
+        var getYear = $('year');
+        var getManufacturer = $('manufacturer');
+        var getLastOilDate = $('lastOilDate');
+        
+        // Get error messages.
+        var messageAry = [];
+        // Year Validation.
+        if(getYear.value == "" || getYear.value < 1955 || getYear.value > 2012) {
+            var yearError = "Please input a valid year (1955 - 2012)";
+            getYear.style.border = "1px solid red";
+            messageAry.push(yearError);
+        }
+        //  Manufacturer validation.
+        if(getManufacturer.value == "--Choose a Car--") {
+            var manufacturerError = "Please select a valid Manufacturer from the list.";
+            getManufacturer.style.border = "1px solid red";
+            messageAry.push(manufacturerError);
+        }
+        // Date validation.
+        if(getLastOilDate.value == "") {
+            var oilDateError = "Please input a date for your last oil change.";
+            getLastOilDate.style.border = "1px solid red";
+            messageAry.push(oilDateError);
+        }
+        
         
     }
     // Variable Defaults
@@ -217,6 +243,6 @@ window.addEventListener("DOMContentLoaded", function(){
     var clearCar = $('clearCar');
     clearCar.addEventListener("click", clearLocal);
     var save = $('submit');
-    save.addEventListener("click", storeData);    
+    save.addEventListener("click", validate);    
 
 });
