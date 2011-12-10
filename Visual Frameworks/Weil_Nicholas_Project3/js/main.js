@@ -164,15 +164,28 @@ window.addEventListener("DOMContentLoaded", function(){
         $('model').value = item.model[1];
         var radios = document.forms[0].engine;
         for (var i=0; i < radios.length; i++) {
-            if (radios[i].checked) {
+            if (radios[i].checked == "4 Cyl." && item.engineValue[1] == "4 Cyl.") {
                 engineValue = radios[i].value;
             }
         $('engine').value = item.engineValue[1];
         $('lastOilDate').value = item.lastOilDate[1];
         var radios = document.forms[0].synthetic;
-        $('synthetic').value = item.syntheticValue[1];
+        if (item.syntheticValue[1] == "true") {
+            $('synthetic').setAttribute("checked", "checked");            
+        }
+        
         $('oilDuration').value = item.oilDuration[1];
         $('notes').value = item.notes[1];
+        
+        // Removing the initial Listener from the input 'register vehicle' button.
+        save.removeEventListener("click", storeData);
+        // Change Submit Button Value to Edit Button.
+        $('submit').value = "Edit Vehicle";
+        var editSubmit = $('submit');
+        //  Save the key value established in this function as a property of the editSubmit event
+        //  so we can use that value when we save the data we edited.
+        editSubmit.addEventListener("click", validate);
+        edit.Submit.key = this.key;
     }
 }
   
@@ -187,6 +200,9 @@ window.addEventListener("DOMContentLoaded", function(){
         return false;
     }
     
+    function validate () {
+        
+    }
     // Variable Defaults
     var carMakes = ["--Choose a Car---", "Acura", "BMW","Chevrolet", "Dodge", "Ford", "Saturn"],
         engineValue,
