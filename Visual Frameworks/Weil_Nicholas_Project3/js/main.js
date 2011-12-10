@@ -76,7 +76,7 @@ window.addEventListener("DOMContentLoaded", function(){
         // Oject properties contain array with the form label and input value.
         var item                = {};
             item.year           = ["Car Year:", $('year').value];
-            item.manfacturer    = ["Make:", $('manufacturer').value];
+            item.manufacturer    = ["Make:", $('manufacturer').value];
             item.model          = ["Model:", $('model').value];
             item.engine         = ["Engine Size:", engineValue];
             item.lastOilDate    = ["Date of last Oil Change:", $('lastOilDate').value];
@@ -164,12 +164,12 @@ window.addEventListener("DOMContentLoaded", function(){
         $('model').value = item.model[1];
         var radios = document.forms[0].engine;
         for (var i=0; i < radios.length; i++) {
-            if (radios[i].checked == "4 Cyl." && item.engineValue[1] == "4 Cyl.") {
-                engineValue = radios[i].value;
+            if (radios[i].value == item.engine[1]) {
+                radios[i].setAttribute("checked", "checked");
             }
-        $('engine').value = item.engineValue[1];
+        }
         $('lastOilDate').value = item.lastOilDate[1];
-        if (item.syntheticValue[1] == "true") {
+        if (item.synthetic[1] == true) {
             $('synthetic').setAttribute("checked", "checked");            
         }
         
@@ -186,7 +186,6 @@ window.addEventListener("DOMContentLoaded", function(){
         editSubmit.addEventListener("click", validate);
         edit.Submit.key = this.key;
     }
-}
   
     function clearLocal (){
         if (localStorage.length === 0) {
@@ -198,7 +197,7 @@ window.addEventListener("DOMContentLoaded", function(){
         }
         return false;
     }
-    
+    //  STOPPED w/11:00 remaining in video 3.5.mov!!!
     function validate () {
         // Define the elements we want to check.
         var getYear = $('year');
@@ -229,6 +228,8 @@ window.addEventListener("DOMContentLoaded", function(){
         
         
     }
+    
+
     // Variable Defaults
     var carMakes = ["--Choose a Car---", "Acura", "BMW","Chevrolet", "Dodge", "Ford", "Saturn"],
         engineValue,
