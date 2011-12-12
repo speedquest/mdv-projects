@@ -1,0 +1,67 @@
+/*
+ Nick Weil
+ VFW Nov.-Dec. 2011
+ Project 3
+ December 8, 2011
+ 
+*/
+
+
+body {
+    width: 100%;
+    font-family: Arial;
+    background-color: #000000;
+}
+h1 {
+    display: inline;
+    margin-left: 7px;
+    color: #C0C0C0;
+}
+nav {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 7px;
+}
+
+Header {
+    position: relative;
+    color: #E16B25;
+    Font-size: 22px ;
+}
+h3 {
+    font-weight:200;
+    color: #EAEAEA;
+}
+div#errorControl {
+    font-size: 22px;
+    color: #EA1818;
+}
+div#formControl{
+    font-size: 20px;
+    color: #E16B25;
+}
+legend {
+    color: #E16B25;
+    position: relative;
+    top: +20px;
+}
+
+fieldset {
+    margin-left: 5px;
+    margin-right: 20px;
+    background-color: #C0C0C0;
+    border: 3px solid #E16B25;
+}
+
+li#vehicleList {
+    color: #fff;
+    font-size: 20px;
+    list-style-type: none;
+}
+li#OilChange{
+        font-weight: bold;   
+}
+textarea {
+    background-color: #EAEAEA;
+}
