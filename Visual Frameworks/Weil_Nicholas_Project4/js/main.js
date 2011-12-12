@@ -1,8 +1,8 @@
 // Visual Frameworks (VFW)
 // Nick Weil
 // Nov.-Dec. 2011
-// Project 3
-// December 8, 2011
+// Project 4
+// December 15, 2011
 
 // Wait until the DOM is ready.
 window.addEventListener("DOMContentLoaded", function(){
@@ -100,7 +100,9 @@ window.addEventListener("DOMContentLoaded", function(){
     function getData () {
         toggleControls ("on");
         if(localStorage.length === 0) {
-            alert("There is no data in Local Storage.");
+            autoFillData();
+            alert("There is no data in Local Storage so default data was added.");
+            
         }
         // Write Data from Local Storage to the Browser.
         var makeDiv = document.createElement('div');
@@ -120,6 +122,7 @@ window.addEventListener("DOMContentLoaded", function(){
             var makeSubList = document.createElement('ul');
             makeLi.appendChild(makeSubList);
             makeLi.setAttribute('id','vehicleList');
+            getImage(obj.manufacturer[1], makeSubList);
             for(var n in obj) {
                 var makeSubLi = document.createElement('li');
                 makeSubList.appendChild(makeSubLi);
@@ -131,6 +134,65 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
     
+    // Get the Image to represent the proper Manfuacturer.
+    function getImage(manName, makeSubList){
+        var imageLi = document.createElement('li');
+        makeSubList.appendChild(imageLi);
+        var newImg = document.createElement('img');
+        var setSrc = newImg.setAttribute("src","images/" + manName + ".png");
+        imageLi.appendChild(newImg);
+    }
+    // JSON Object Which will auto populate local storage.
+    function autoFillData() {
+        alert ("Filling JSON Data NOW!");
+        var json = {
+            "vehicle1": {
+                "year": ["Car Year:", 1970],
+                "manufacturer": ["Manufacturer:", "Chevrolet"],
+                "model": ["Model:", "Cavalier"],
+                "engine": ["Engine:", "6 cyl."],
+                "lastOilDate": ["Date of Last Oil Change:", "2008-11-29"],
+                "synthetic": ["Synthetic", "checked"],
+                "oilDuration": ["Desired Oil Change Duration:", 5000],
+                "notes": ["Notes:", "Testing JSON"]
+            },
+            "vehicle2": {
+                "year": ["Car Year:", 1978],
+                "manufacturer": ["Manufacturer:", "Chevrolet"],
+                "model": ["Model:", "Malibu"],
+                "engine": ["Engine:", "8 cyl."],
+                "lastOilDate": ["Date of Last Oil Change:", "2005-06-29"],
+                "synthetic": ["Synthetic", "checked"],
+                "oilDuration": ["Desired Oil Change Duration:", 5000],
+                "notes": ["Notes:", "First Car"]
+            },
+            "vehicle3": {
+                "year": ["Car Year:", 2002],
+                "manufacturer": ["Manufacturer:", "Chevrolet"],
+                "model": ["Model:", "Silverado"],
+                "engine": ["Engine:", "8 cyl."],
+                "lastOilDate": ["Date of Last Oil Change:", "2011-11-15"],
+                "synthetic": ["Synthetic", "checked"],
+                "oilDuration": ["Desired Oil Change Duration:", 5000],
+                "notes": ["Notes:", "Truck"]
+            },
+            "vehicle4": {
+                "year": ["Car Year:", 2002],
+                "manufacturer": ["Manufacturer:", "BMW"],
+                "model": ["Model:", "M3"],
+                "engine": ["Engine:", "8 cyl."],
+                "lastOilDate": ["Date of Last Oil Change:", "2011-11-15"],
+                "synthetic": ["Synthetic", "checked"],
+                "oilDuration": ["Desired Oil Change Duration:", 6000],
+                "notes": ["Notes:", "Beemer"]
+            }
+        }
+        //  Store JSON OBject into Local Storage
+        for (var n in json) {
+            var id                  = Math.floor(Math.random()*100000001);
+            localStorage.setItem(id, JSON.stringify(json[n]));
+        }
+    }
     // Make Item Links
    // Create edit/delete links for each Local Storage Item.
     function makeItemLinks(key, linksLi) {
@@ -270,7 +332,7 @@ window.addEventListener("DOMContentLoaded", function(){
     
 
     // Variable Defaults
-    var carMakes = ["--Choose a Car--", "Acura", "BMW","Chevrolet", "Dodge", "Ford", "Saturn"],
+    var carMakes = ["--Choose a Car--", "Acura", "BMW","Chevrolet", "Dodge", "Ford"],
         engineValue,
         syntheticValue = false,
         errMsg = $('errors');
