@@ -10,11 +10,12 @@
 body {
     width: 100%;
     font-family: Arial;
-    background-color: #C0C0C0;
+    background-color: #000000;
 }
 h1 {
     display: inline;
     margin-left: 7px;
+    color: #C0C0C0;
 }
 nav {
     font-size: 24px;
@@ -22,30 +23,45 @@ nav {
     margin-bottom: 10px;
     margin-left: 7px;
 }
+
 Header {
-    color: #FADB4F;
+    position: relative;
+    color: #E16B25;
     Font-size: 22px ;
 }
+h3 {
+    font-weight:200;
+    color: #EAEAEA;
+}
+div#errorControl {
+    font-size: 22px;
+    color: #EA1818;
+}
+div#formControl{
+    font-size: 20px;
+    color: #E16B25;
+}
 legend {
-    color: #FADB4F;
+    color: #E16B25;
     position: relative;
     top: +20px;
-}
-li {
-    font-size: 20px;
-    color: #FADB4F;
 }
 
 fieldset {
     margin-left: 5px;
     margin-right: 20px;
-    background-color: #324EA1;
-    border: 3px solid #FFFFFF;
+    background-color: #C0C0C0;
+    border: 3px solid #E16B25;
 }
 
+li#vehicleList {
+    color: #fff;
+    font-size: 20px;
+    list-style-type: none;
+}
 li#OilChange{
         font-weight: bold;   
 }
 textarea {
-    background-color: #C4C7DC;
+    background-color: #EAEAEA;
 }
