@@ -68,8 +68,16 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     // Save data to local storage for one item = localStorage.setItem("Key","data");
 
-    function storeData () {
-        var id                  = Math.floor(Math.random()*100000001);
+    function storeData (key) {
+        //  If there is no key, this is a brand new item and a key needs to be assigned.
+        if (!key) {
+            var id                  = Math.floor(Math.random()*100000001);
+        } else {
+            // A key already exists and is being passed through from the exisitng key.
+            // From the editSubmit event handler.
+            id = key;
+        }
+        
         getCheckBoxValue ();
         getSelectedRadio ();
         // Gather up form field values and store them in an object.
@@ -111,6 +119,7 @@ window.addEventListener("DOMContentLoaded", function(){
             var obj = JSON.parse(value);
             var makeSubList = document.createElement('ul');
             makeLi.appendChild(makeSubList);
+            makeLi.setAttribute('id','vehicleList');
             for(var n in obj) {
                 var makeSubLi = document.createElement('li');
                 makeSubList.appendChild(makeSubLi);
@@ -143,18 +152,18 @@ window.addEventListener("DOMContentLoaded", function(){
         deleteLink.href = "#";
         deleteLink.key = key;
         var deleteText = "Delete Vehicle";
-        // deleteLink.addEventListener("click", deleteItem);
+        deleteLink.addEventListener("click", deleteItem);
         deleteLink.innerHTML = deleteText;
         linksLi.appendChild(deleteLink);
 
     }
-    // VIDEO #3.3 3 minutes remaining!
     
     // Edit Item Function
     function editItem () {
         //Grab the data of the edited item from local storage
         var value = localStorage.getItem(this.key);
         var item = JSON.parse(value);
+        
         // Show the form
         toggleControls("off");
         
@@ -169,7 +178,7 @@ window.addEventListener("DOMContentLoaded", function(){
             }
         }
         $('lastOilDate').value = item.lastOilDate[1];
-        if (item.synthetic[1] == true) {
+        if (item.synthetic[1] === true) {
             $('synthetic').setAttribute("checked", "checked");            
         }
         
@@ -184,9 +193,20 @@ window.addEventListener("DOMContentLoaded", function(){
         //  Save the key value established in this function as a property of the editSubmit event
         //  so we can use that value when we save the data we edited.
         editSubmit.addEventListener("click", validate);
-        edit.Submit.key = this.key;
+        editSubmit.key = this.key;
     }
-  
+    // Delete Item function
+    
+    function deleteItem () {
+        var ask = confirm ("Are you sure you want to REMOVE this vehicle?");
+        if (ask) {
+            localStorage.removeItem(this.key);
+            alert("The vehicle was REMOVED!");
+            window.location.reload();
+        } else {
+            alert("Item was NOT REMOVED!");
+        }
+    }
     function clearLocal (){
         if (localStorage.length === 0) {
             alert("There is no data to clear!");
@@ -194,53 +214,72 @@ window.addEventListener("DOMContentLoaded", function(){
             localStorage.clear();
             alert("All vehicles have been removed!");
             window.location.reload();
-        }
-        return false;
+            return false;
+        } 
     }
-    //  STOPPED w/11:00 remaining in video 3.5.mov!!!
-    function validate () {
+    
+    function validate (e) {
         // Define the elements we want to check.
         var getYear = $('year');
         var getManufacturer = $('manufacturer');
         var getLastOilDate = $('lastOilDate');
+        
+        // Reset Error Mesages.
+        
+        errMsg.innerHTML = "";
+        getYear.style.border = "1px solid black";
+        getManufacturer.style.border = "1px solid black";
+        getLastOilDate.style.border = "1px solid black";
+
         
         // Get error messages.
         var messageAry = [];
         // Year Validation.
         if(getYear.value === "" || getYear.value < 1955 || getYear.value > 2012) {
             var yearError = "Please input a valid year (1955 - 2012)";
-            getYear.style.border = "1px solid red";
+            getYear.style.border = "1.5px solid red";
             messageAry.push(yearError);
         }
         //  Manufacturer validation.
         if(getManufacturer.value === "--Choose a Car--") {
             var manufacturerError = "Please select a valid Manufacturer from the list.";
-            getManufacturer.style.border = "1px solid red";
+            getManufacturer.style.border = "1.5px solid red";
             messageAry.push(manufacturerError);
         }
         // Date validation.
         if(getLastOilDate.value === "") {
             var oilDateError = "Please input a date for your last oil change.";
-            getLastOilDate.style.border = "1px solid red";
+            getLastOilDate.style.border = "1.5px solid red";
             messageAry.push(oilDateError);
         }
         // If there are errors, display them on the screen.
-        
-        
+        if (messageAry.length >= 1){
+            for(var i=0, j=messageAry.length; i<j; i++){
+                var txt = document.createElement('li');
+                txt.innerHTML = messageAry[i];
+                errMsg.appendChild(txt);
+            }
+            e.preventDefault();
+            return false;
+        } else {
+            // If everything is good, save Data. Send the key value (comes from editData Function).
+            // This key value was passed through editSubmit eventListener as a property.
+            storeData(this.key);
+        }
     }
     
 
     // Variable Defaults
-    var carMakes = ["--Choose a Car---", "Acura", "BMW","Chevrolet", "Dodge", "Ford", "Saturn"],
+    var carMakes = ["--Choose a Car--", "Acura", "BMW","Chevrolet", "Dodge", "Ford", "Saturn"],
         engineValue,
-        syntheticValue = false;
+        syntheticValue = false,
+        errMsg = $('errors');
     makeManufacturers();
     
     
     // Set Link & Submit Click Events
     var displayCar = $('displayCar');
     displayCar.addEventListener("click", getData);
-    
     var clearCar = $('clearCar');
     clearCar.addEventListener("click", clearLocal);
     var save = $('submit');
