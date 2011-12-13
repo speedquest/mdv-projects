@@ -28,7 +28,8 @@ Project 4
 </head>
 
 <body>
-    <header><h1>Add A Car to Your Garage</h1></header>
+    <header>
+      <h1>Add A Car to Your Garage</h1></header>
     <nav>
         <!-- Reset the data on the form  -->
         <a href="#" id="clearCar">Reset Car Info</a>    
@@ -48,10 +49,10 @@ Project 4
                     
                 <ul>
                     <!-- Text Entry  -->
-                    <li><label for="year">* Car Year :</label><input type="text" id="year" /></li>
+                    <li><label for="year"><span class="yearRequired">*</span> Car Year :</label><input type="text" id="year" /></li>
                     
                     <!--  Car Make -->
-                    <li id="select"><label for="group">* Car Make: </label></li>
+                    <li id="select"><label for="group"><span class="makeRequired">*</span> Car Make: </label></li>
                     <li><label for="model">Car Model (Mustang, Camaro, etc.):</label><input type="text" id="model" /></li>
                     
                     <!-- Radio Button -->
@@ -62,7 +63,7 @@ Project 4
                             <li><input type="radio" value="8 Cyl." id="cyl8" name="engine"/><label for="cyl8">8 cyl.</label></li> 
                         </ul>
                     <!-- Date Entry  -->
-                    <li id="OilChange"><label for="lastOilDate">* Date of last Oil Change:</label>
+                    <li id="OilChange"><label for="lastOilDate"><span class="lastOilDateRequired">*</span> Date of last Oil Change:</label>
                         <input type="date" size="30" id="lastOilDate"/><br>
                         <!-- Boolean -->
                         <label for="synthetic">Check for Synthetic Oil:</label>
