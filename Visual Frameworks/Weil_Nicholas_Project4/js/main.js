@@ -148,23 +148,23 @@ window.addEventListener("DOMContentLoaded", function(){
         var json = {
             "vehicle1": {
                 "year": ["Car Year:", 1970],
-                "manufacturer": ["Manufacturer:", "Chevrolet"],
-                "model": ["Model:", "Cavalier"],
+                "manufacturer": ["Manufacturer:", "Dodge"],
+                "model": ["Model:", "Challenger"],
                 "engine": ["Engine:", "6 cyl."],
                 "lastOilDate": ["Date of Last Oil Change:", "2008-11-29"],
-                "synthetic": ["Synthetic", "checked"],
+                "synthetic": ["Synthetic:", "No"],
                 "oilDuration": ["Desired Oil Change Duration:", 5000],
                 "notes": ["Notes:", "Testing JSON"]
             },
             "vehicle2": {
                 "year": ["Car Year:", 1978],
-                "manufacturer": ["Manufacturer:", "Chevrolet"],
-                "model": ["Model:", "Malibu"],
+                "manufacturer": ["Manufacturer:", "Ford"],
+                "model": ["Model:", "Fairmont"],
                 "engine": ["Engine:", "8 cyl."],
                 "lastOilDate": ["Date of Last Oil Change:", "2005-06-29"],
-                "synthetic": ["Synthetic", "checked"],
+                "synthetic": ["Synthetic:", "No"],
                 "oilDuration": ["Desired Oil Change Duration:", 5000],
-                "notes": ["Notes:", "First Car"]
+                "notes": ["Notes:", "Lame Car"]
             },
             "vehicle3": {
                 "year": ["Car Year:", 2002],
@@ -172,7 +172,7 @@ window.addEventListener("DOMContentLoaded", function(){
                 "model": ["Model:", "Silverado"],
                 "engine": ["Engine:", "8 cyl."],
                 "lastOilDate": ["Date of Last Oil Change:", "2011-11-15"],
-                "synthetic": ["Synthetic", "checked"],
+                "synthetic": ["Synthetic:", "Yes"],
                 "oilDuration": ["Desired Oil Change Duration:", 5000],
                 "notes": ["Notes:", "Truck"]
             },
@@ -182,7 +182,7 @@ window.addEventListener("DOMContentLoaded", function(){
                 "model": ["Model:", "M3"],
                 "engine": ["Engine:", "8 cyl."],
                 "lastOilDate": ["Date of Last Oil Change:", "2011-11-15"],
-                "synthetic": ["Synthetic", "checked"],
+                "synthetic": ["Synthetic:", "Yes"],
                 "oilDuration": ["Desired Oil Change Duration:", 6000],
                 "notes": ["Notes:", "Beemer"]
             }
