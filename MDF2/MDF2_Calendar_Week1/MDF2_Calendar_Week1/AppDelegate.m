@@ -7,10 +7,14 @@
 //
 
 #import "AppDelegate.h"
-
 #import "ViewController.h"
 
 @implementation AppDelegate
+
+@synthesize window = _window;
+@synthesize viewController = _viewController;
+@synthesize calendarChoice;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
