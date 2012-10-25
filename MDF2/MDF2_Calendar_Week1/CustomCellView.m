@@ -9,6 +9,7 @@
 #import "CustomCellView.h"
 
 @implementation CustomCellView
+@synthesize placeLabel, detailLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
